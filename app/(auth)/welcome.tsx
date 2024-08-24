@@ -1,7 +1,16 @@
 import { Image, StyleSheet, Text, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+import { useRouter } from 'expo-router';
+
 const Welcome = () => {
+
+    const router = useRouter();
+
+    const handle_continue = () => {
+        router.push('/sign-up' as never);
+    }
+
     return (
         <SafeAreaView style={styles.container}>
             <Image
@@ -14,7 +23,9 @@ const Welcome = () => {
             <Text style={styles.description}>
                 Organizing your daily tasks is now easier with WillFire. Keep track of activities starrting today.
             </Text>
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity 
+                style={styles.button} 
+                onPress={handle_continue}>
                 <Text style={styles.buttonText}>
                     Continue
                 </Text>
