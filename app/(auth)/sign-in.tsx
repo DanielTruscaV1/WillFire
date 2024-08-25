@@ -4,7 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { useRouter } from 'expo-router';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const SignUp = () => {
+const SignIn = () => {
     const router = useRouter();
 
     return (
@@ -13,12 +13,7 @@ const SignUp = () => {
                 behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
                 style={styles.innerContainer}
             >
-                <Text style={styles.header}>Create Your Account</Text>
-                
-                <View style={styles.inputGroup}>
-                    <Icon name="account" size={20} color="gray" style={styles.icon} />
-                    <TextInput style={styles.input} placeholder="Name" />
-                </View>
+                <Text style={styles.header}>Sign In to Your Account</Text>
                 
                 <View style={styles.inputGroup}>
                     <Icon name="email" size={20} color="gray" style={styles.icon} />
@@ -30,18 +25,17 @@ const SignUp = () => {
                     <TextInput style={styles.input} placeholder="Password" secureTextEntry={true} />
                 </View>
                 
-                <View style={styles.inputGroup}>
-                    <Icon name="lock" size={20} color="gray" style={styles.icon} />
-                    <TextInput style={styles.input} placeholder="Confirm Password" secureTextEntry={true} />
-                </View>
-                
-                <TouchableOpacity style={styles.button}>
-                    <Text style={styles.buttonText}>Sign-Up </Text>
+                <TouchableOpacity style={styles.forgotPasswordButton}>
+                    <Text style={styles.forgotPasswordText}>Forgot Password? </Text>
                 </TouchableOpacity>
                 
-                <TouchableOpacity onPress={() => router.push('/sign-in' as never)} style={styles.noticeLink}>
+                <TouchableOpacity style={styles.button}>
+                    <Text style={styles.buttonText}>Sign-In </Text>
+                </TouchableOpacity>
+                
+                <TouchableOpacity onPress={() => router.push('/sign-up' as never)} style={styles.noticeLink}>
                     <Text style={styles.notice}>
-                        Already have an account? {"\n"}Sign-In instead.
+                        Don't have an account? {"\n"}Sign-Up instead.
                     </Text>
                 </TouchableOpacity>
             </KeyboardAvoidingView>
@@ -81,6 +75,14 @@ const styles = StyleSheet.create({
         height: 60,
         color: "black",
     },
+    forgotPasswordButton: {
+        alignItems: 'flex-end',
+        marginBottom: 20,
+    },
+    forgotPasswordText: {
+        color: "#E57676",
+        fontSize: 14,
+    },
     button: {
         backgroundColor: "#E57676",
         borderRadius: 10,
@@ -101,4 +103,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default SignUp;
+export default SignIn;
